@@ -1,9 +1,9 @@
 package ml.kelvinco.java.util;
 
-public class KLVNJConstants {
+public interface KLVNJConstants {
 	
-	protected final static String APP_NAME    = "KLVNBatch";
-	protected final static String APP_VERSION = "0.01";
+	public final static String APP_NAME    = "KLVNBatch";
+	public final static String APP_VERSION = "0.01";
 	
 	
 	

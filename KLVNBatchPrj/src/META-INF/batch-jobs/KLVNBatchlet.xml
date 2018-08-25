@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd" id="KLVNBatchlet" restartable="false" version="1.0">
+	<step id="step01">
+		<batchlet ref="ml.kelvinco.java.batch.util.KLVNBatchlet">
+			<properties >
+				<property name="time.property" value="#{jobParameters['sleep.time.seconds']}"/>
+			</properties>
+		</batchlet>
+	</step>
+</job>

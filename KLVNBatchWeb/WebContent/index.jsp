@@ -9,20 +9,45 @@
 <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script>  --> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script>
-            $(document).on("click", "#submit", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
-            	var jobName = document.getElementById("jobName").value;
-            	$.get("JobStatus?jobName="+jobName, function(responseText) {   // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response text...
-                    $("#result").text(responseText);           // Locate HTML DOM element with ID "somediv" and set its text content with the response text.
-                });
-            });
-            
+            function submitJob(jobName) { 
+            	//var jobName = document.getElementById("jobName").value;
+            	$.get("JobController?jobName="+jobName, function(responseText) {   
+            		$("#"+jobName).text(responseText);
+            		});
+            }  
+            var timeout = setInterval(reloadPage, 5000);    
+            function reloadPage () {
+            	$.get("JobStatus?jobName=KLVNBatchlet", function(responseText) {$("#KLVNBatchlet").text(responseText);});
+            	$.get("JobStatus?jobName=KLVNChunk", function(responseText) {$("#KLVNChunk").text(responseText);});
+            }
         </script>
 </head>
 <body>
-		<input type="text" id="jobName"></input>
-        <button id="submit">submit job</button>
-        <br><br>
-        <div id="result"></div>
+<table border="1">
+<tr>
+<th>Job Name</th>
+<th>action</th>
+<th>Job Status</th>
+</tr>
+<tr>
+<td>KLVNBatchlet</td>
+<td><button type="button" onclick="submitJob('KLVNBatchlet')">submit job</button>
+<button type="button" onclick="stopJob('KLVNBatchlet')">stop job</button>
+</td>
+<td><span id="KLVNBatchlet"></span></td>
+</tr>
+
+<tr>
+<td>KLVNChunk</td>
+<td><button type="button" onclick="submitJob('KLVNChunk')">submit job</button>
+<button type="button" onclick="stopJob('KLVNChunk')">stop job</button>
+</td>
+<td><span id="KLVNChunk"></span></td>
+</tr>
+
+
+</table>
+
 
 </body>
 </html>

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class KLVNJobStatus
  */
-@WebServlet("/JobStatus")
+@WebServlet(urlPatterns = { "/JobStatus" })
 public class KLVNJobStatus extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private JobOperator jobOperator;   
@@ -34,16 +34,12 @@ public class KLVNJobStatus extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String jobName = request.getParameter("jobName");
-//		response.setContentType("text/plain");
-//		PrintWriter	out = response.getWriter();
-//		out.print("Theres no instance of this job...");
-		   String text = "some text";
+		String jobName = request.getParameter("jobName");
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8"); 
+		PrintWriter	out = response.getWriter();
+		out.print("Theres no instance of this job...  " +jobName );
 
-		    response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
-		    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-		    response.getWriter().write(text);       // Write response body.		
-		
 	}
 
 	/**
@@ -52,7 +48,6 @@ public class KLVNJobStatus extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 
-		
 		
 //		if(jobName!=null) {
 //			JobOperator jobOperator = getJobOperator();

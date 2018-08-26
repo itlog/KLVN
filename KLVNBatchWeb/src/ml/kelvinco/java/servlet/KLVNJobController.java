@@ -24,7 +24,7 @@ import ml.kelvinco.java.util.KLVNJConstants;
 /**
  * Servlet implementation class KLVNJobController
  */
-@WebServlet("/JobController")
+@WebServlet(urlPatterns = { "/JobController" })
 public class KLVNJobController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected final static Logger logger = Logger.getLogger(KLVNJobController.class.getName());  
